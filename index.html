@@ -1,104 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Flappy Bird</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador GTA_VI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #contador {
+            font-size: 2em;
+            margin: 20px;
+        }
+    </style>
 </head>
 <body>
-    <canvas id="flappyBirdCanvas" width="400" height="400"></canvas>
+    <h1>Contador hasta el 6 de marzo de 2025</h1>
+    <div id="contador"></div>
     <script>
-        const canvas = document.getElementById('flappyBirdCanvas');
-        const ctx = canvas.getContext('2d');
-
-        const bird = {
-            x: 50,
-            y: canvas.height / 2,
-            width: 40,
-            radius: 1,
-            height: 30,
-            velocity: 0,
-            gravity: 0.3,
-            jumpPower: 7
-        };
-
-        const pipe = {
-            x: canvas.width,
-            width: 40,
-            gap: 100,
-            minHeight: 50,
-            speed: 2
-        };
-
-        const pipes = [];
-
-        let score = 0;
-
-        const birdImage = new Image();
-        birdImage.src = 'bird.png';
-        birdImage.onload = function() {
-            draw();
-        };
-
-        function drawBird() {
-            ctx.beginPath();
-            ctx.arc(bird.x, bird.y, bird.radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'red';
-            ctx.fill();
-            ctx.closePath();
+        const fechaObjetivo = new Date('2025-03-06T00:00:00');
+        setInterval(actualizarContador, 1000);
+        function actualizarContador() {
+            const fechaActual = new Date();
+            const diferencia = fechaObjetivo - fechaActual;
+            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+            document.getElementById('contador').innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
         }
-
-        function drawBird() {
-            ctx.drawImage(birdImage, bird.x, bird.y, bird.width, bird.height);
-        }
-
-        function drawPipe(pipeY, pipeHeight) {
-            ctx.fillStyle = 'green';
-            ctx.fillRect(pipe.x, 0, pipe.width, pipeY);
-            ctx.fillRect(pipe.x, pipeY + pipe.gap, pipe.width, canvas.height - (pipeY + pipe.gap));
-        }
-
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            bird.velocity += bird.gravity;
-            bird.y += bird.velocity;
-
-            if (bird.y + bird.radius > canvas.height || bird.y - bird.radius < 0) {
-                gameOver();
-            }
-
-            if (pipe.x + pipe.width < 0) {
-                pipe.x = canvas.width;
-                pipe.gap = Math.floor(Math.random() * (canvas.height - 100)) + 50;
-            }
-
-            if (bird.x + bird.radius > pipe.x && bird.x - bird.radius < pipe.x + pipe.width) {
-                if (bird.y - bird.radius < pipe.gap || bird.y + bird.radius > pipe.gap + pipe.gap) {
-                    gameOver();
-                }
-            }
-
-            if (bird.x === pipe.x + pipe.width) {
-                score++;
-            }
-
-            pipe.x -= pipe.speed;
-
-            drawBird();
-            drawPipe(pipe.gap, pipe.width);
-            requestAnimationFrame(draw);
-        }
-
-        function jump() {
-            bird.velocity = -bird.jumpPower;
-        }
-
-        function gameOver() {
-            alert('Game Over! Your score: ' + score);
-            location.reload();
-        }
-
-        document.addEventListener('keydown', jump);
-        draw();
     </script>
 </body>
 </html>
