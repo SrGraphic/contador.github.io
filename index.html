@@ -5,20 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contador GTA_VI</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&family=Roboto&display=swap');
+
+       h2 {
+            font-family: 'Roboto', sans-serif;
             text-align: center;
             margin: 50px;
         }
 
         #contador {
-            font-size: 2em;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 3em;
             margin: 20px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>Contador hasta que salga GTA VI</h1>
+    <h2>CONTADOR HASTA QUE SALGA GTA VI</h2>
+    <hr>
     <div id="contador"></div>
     <script>
         const fechaObjetivo = new Date('2025-03-06T00:00:00');
@@ -30,7 +35,7 @@
             const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
             const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-            document.getElementById('contador').innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+            document.getElementById('contador').innerHTML = `${dias}D ${horas}H ${minutos}M ${segundos}S`;
         }
     </script>
 </body>
