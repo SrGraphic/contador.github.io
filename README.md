@@ -8,8 +8,8 @@ Contador funcional creado con fines de añadir el proyecto al portafolio persona
 
 - Iconos utilizados de FLATICON -> https://www.flaticon.es/
 
-- Imagen de ROCKSTARGAMES -> https://www.rockstargames.com/es/
+- Imagen de ROCKSTARGAMES -> https://www.rockstargames.com/es/ | https://twitter.com/rockstargames
 
 # VERSIONES
 
-1.0 
+1.0v | Versión estable interfaz 06/12/2023
