@@ -3,28 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contador GTA_VI</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&family=Roboto&display=swap');
-
-       h2 {
-            font-family: 'Roboto', sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-
-        #contador {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 3em;
-            margin: 20px;
-            text-align: center;
-        }
-    </style>
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <title>Contador GTAVI</title>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&family=Roboto&display=swap');body{background-image:url(fondo.png);}h2{font-family:'Roboto',sans-serif;text-align:center;margin:50px;}#contador{font-family:'Rajdhani',sans-serif;font-size:40px;margin-top:300px;text-align:center;border:1px solid rgb(0,0,0);margin-left:40%;margin-right:40%;}#contador span{color:#e9d7d7;font-weight:bold;font-size:20px;}footer{font-family:'Roboto',sans-serif;font-weight:bold;font-size:12px;color:black;position:fixed;bottom:0;width:100%;}@media only screen and (max-width:600px){h2{font-size:15px;}#contador{margin:10px;}#contador span{font-size:14px;}footer{font-size:9px;text-align:center;font-weight:bold;color:black;}}</style>
 </head>
 <body>
     <h2>CONTADOR HASTA QUE SALGA GTA VI</h2>
-    <hr>
     <div id="contador"></div>
+    <footer>
+        CREATED BY SRGRAPHIC <a href="https://www.flaticon.es/iconos-gratis/reloj" target="_blank" style="text-decoration: none;">(ICONS - FLATICON)</a>
+    </footer>
     <script>
         const fechaObjetivo = new Date('2025-03-06T00:00:00');
         setInterval(actualizarContador, 1000);
@@ -35,7 +23,7 @@
             const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
             const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-            document.getElementById('contador').innerHTML = `${dias}D ${horas}H ${minutos}M ${segundos}S`;
+            document.getElementById('contador').innerHTML = `${dias}<span>D</span> ${horas}<span>H</span> ${minutos}<span>MIN</span> ${segundos}<span>SEG</span>`;
         }
     </script>
 </body>
